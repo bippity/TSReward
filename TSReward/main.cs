@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace TSREWARD
 {
-    [ApiVersion(1, 20)]
+    [ApiVersion(1, 23)]
     public class TSReward : TerrariaPlugin
     {
         public static Config config;
@@ -98,7 +98,7 @@ namespace TSREWARD
                             {
                                 if (SEconomyPlugin.Instance != null)
                                 {
-                                    IBankAccount Server = SEconomyPlugin.Instance.GetBankAccount(TSServerPlayer.Server.UserID);
+									IBankAccount Server = SEconomyPlugin.Instance.GetBankAccount(TSServerPlayer.Server.User.ID);
                                     IBankAccount Player = SEconomyPlugin.Instance.GetBankAccount(args.Player.Index);
                                     Server.TransferToAsync(Player, config.SEconomyReward, config.AnnounceOnReceive ? BankAccountTransferOptions.AnnounceToReceiver : BankAccountTransferOptions.SuppressDefaultAnnounceMessages, "voting on terraria-servers.com", "Voted on terraria-servers.com");
 
